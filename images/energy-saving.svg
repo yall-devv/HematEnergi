@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Ilustrasi lampu hemat energi dengan daun hijau">
+  <rect width="640" height="360" fill="#E5EEDC"/>
+  <circle cx="320" cy="160" r="95" fill="#F5C84C" opacity="0.35"/>
+  <path d="M320 70 C270 70 240 105 240 145 C240 175 258 190 272 210 V235 H368 V210 C382 190 400 175 400 145 C400 105 370 70 320 70 Z" fill="#FFF3C4" stroke="#28543B" stroke-width="6"/>
+  <rect x="276" y="235" width="88" height="14" rx="4" fill="#28543B"/>
+  <rect x="284" y="253" width="72" height="14" rx="4" fill="#28543B"/>
+  <rect x="296" y="271" width="48" height="12" rx="6" fill="#28543B"/>
+  <path d="M320 205 C295 190 295 150 320 125 C345 150 345 190 320 205 Z" fill="#80A879"/>
+  <path d="M320 205 V140" stroke="#28543B" stroke-width="3" stroke-linecap="round"/>
+  <g stroke="#80A879" stroke-width="5" stroke-linecap="round">
+    <line x1="170" y1="150" x2="200" y2="150"/><line x1="440" y1="150" x2="470" y2="150"/>
+    <line x1="195" y1="90" x2="215" y2="110"/><line x1="445" y1="110" x2="425" y2="90"/>
+  </g>
+  <rect y="320" width="640" height="40" fill="#80A879"/>
+</svg>

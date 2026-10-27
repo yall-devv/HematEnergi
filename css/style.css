@@ -1,0 +1,248 @@
+/* ==========================================================
+   EcoHome - style.css
+   Pendekatan mobile-first: gaya dasar untuk layar kecil,
+   lalu diperluas dengan media query min-width.
+   ========================================================== */
+
+/* 1. CSS VARIABLES: nilai desain yang dipakai berulang */
+:root {
+  --green-dark: #28543B;
+  --green-leaf: #80A879;
+  --green-light: #E5EEDC;
+  --cream: #F5F3E8;
+  --white: #FFFFFF;
+  --text: #536355;
+  --text-strong: #1F3A2A;
+  --radius: 16px;
+  --shadow: 0 6px 18px rgba(40, 84, 59, 0.12);
+  --shadow-hover: 0 10px 24px rgba(40, 84, 59, 0.2);
+  --font: "Poppins", Arial, Helvetica, sans-serif;
+  --space: 1.25rem;
+}
+
+/* 2. RESET SEDERHANA */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--cream);
+}
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { color: var(--green-dark); line-height: 1.25; margin: 0 0 0.6em; }
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; }
+a { color: var(--green-dark); }
+ul { padding-left: 1.2rem; }
+
+/* Fokus keyboard yang jelas */
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible {
+  outline: 3px solid var(--green-dark);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* 3. LAYOUT UMUM */
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 var(--space); }
+.section { padding: 3rem 0; }
+.section-alt { background: var(--green-light); }
+.section-title { text-align: center; margin-bottom: 2rem; }
+.section-title p { max-width: 640px; margin: 0 auto; }
+.eyebrow {
+  display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--green-leaf); margin-bottom: 0.4rem;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0; background: var(--green-dark);
+  color: var(--white); padding: 0.6rem 1rem; z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* 4. HEADER & NAVIGASI (Flexbox) */
+.site-header {
+  background: var(--white); position: sticky; top: 0; z-index: 50;
+  box-shadow: 0 2px 10px rgba(40, 84, 59, 0.1);
+}
+.header-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding-top: 0.7rem; padding-bottom: 0.7rem;
+}
+.brand {
+  display: flex; align-items: center; gap: 0.6rem; text-decoration: none;
+  font-weight: 700; font-size: 1.3rem; color: var(--green-dark);
+}
+.nav-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem;
+}
+.nav-link {
+  display: block; padding: 0.55rem 0.9rem; min-height: 44px; line-height: 1.7;
+  text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  color: var(--text-strong); border-radius: 999px; transition: background 0.2s, color 0.2s;
+}
+.nav-link:hover { background: var(--green-light); }
+.nav-link.active { background: var(--green-dark); color: var(--white); }
+
+/* 5. TOMBOL */
+.btn {
+  display: inline-block; padding: 0.8rem 1.6rem; min-height: 44px;
+  border-radius: 999px; font-weight: 600; text-decoration: none;
+  border: 2px solid var(--green-dark); transition: transform 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn-primary { background: var(--green-dark); color: var(--white); }
+.btn-primary:hover { background: #1d3f2c; transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.btn-outline { background: transparent; color: var(--green-dark); }
+.btn-outline:hover { background: var(--green-dark); color: var(--white); transform: translateY(-2px); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+
+/* 6. HERO (Grid) */
+.hero { background: linear-gradient(180deg, var(--green-light), var(--cream)); padding: 2.5rem 0 3rem; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+.hero h1 { font-size: 2.2rem; }
+.hero p.lead { font-size: 1.1rem; }
+.hero-img { border-radius: var(--radius); box-shadow: var(--shadow); background: var(--white); }
+
+/* Banner judul halaman dalam */
+.page-banner { background: var(--green-dark); color: var(--white); padding: 2.5rem 0; text-align: center; }
+.page-banner h1 { color: var(--white); margin-bottom: 0.4rem; }
+.page-banner p { margin: 0 auto; max-width: 640px; color: var(--green-light); }
+
+/* 7. KARTU (Grid) */
+.grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+.card {
+  background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+  box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.card-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; font-size: 1.7rem; border-radius: 50%;
+  background: var(--green-light); margin-bottom: 0.8rem;
+}
+.card img { border-radius: 12px; margin-bottom: 1rem; width: 100%; }
+.card p:last-child { margin-bottom: 0; }
+
+/* Kartu SDG */
+.sdg-card { border-left: 8px solid var(--green-leaf); }
+.sdg-number {
+  display: inline-block; background: var(--green-dark); color: var(--white);
+  font-weight: 700; padding: 0.15rem 0.8rem; border-radius: 999px; font-size: 0.85rem; margin-bottom: 0.6rem;
+}
+
+/* Pengantar 2 kolom */
+.split { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+.split img { border-radius: var(--radius); box-shadow: var(--shadow); background: var(--white); }
+
+/* Ajakan bertindak */
+.cta {
+  background: var(--green-dark); color: var(--green-light); text-align: center;
+  border-radius: var(--radius); padding: 2.5rem 1.5rem;
+}
+.cta h2 { color: var(--white); }
+
+/* 8. HALAMAN PANDUAN */
+.tip-group { margin-bottom: 2.5rem; }
+.tip-group h2 { display: flex; align-items: center; gap: 0.6rem; }
+.tip-card h3 { margin-bottom: 0.3rem; }
+
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { margin-bottom: 0.4rem; }
+.checklist label {
+  display: flex; align-items: flex-start; gap: 0.8rem; background: var(--white);
+  padding: 0.9rem 1rem; border-radius: 12px; box-shadow: var(--shadow); cursor: pointer; min-height: 44px;
+}
+.checklist input { width: 22px; height: 22px; margin-top: 0.2rem; accent-color: var(--green-dark); flex-shrink: 0; }
+.checklist input:checked + span { text-decoration: line-through; color: var(--green-leaf); }
+.note {
+  background: var(--green-light); border-left: 6px solid var(--green-leaf);
+  padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.92rem; margin-top: 1rem;
+}
+
+/* 9. HALAMAN ARTIKEL */
+.toc { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-bottom: 2rem; padding: 0; list-style: none; }
+.toc a {
+  display: block; padding: 0.5rem 1rem; background: var(--white); border-radius: 999px;
+  text-decoration: none; box-shadow: var(--shadow); font-size: 0.92rem; transition: background 0.2s;
+}
+.toc a:hover { background: var(--green-light); }
+.article {
+  background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 1.5rem; margin-bottom: 2rem; scroll-margin-top: 150px;
+}
+.article img { border-radius: 12px; margin-bottom: 1rem; width: 100%; max-height: 320px; object-fit: contain; background: var(--green-light); }
+.article .summary { font-weight: 500; color: var(--text-strong); border-left: 5px solid var(--green-leaf); padding-left: 1rem; }
+.article .source { font-size: 0.9rem; border-top: 1px dashed var(--green-leaf); padding-top: 0.8rem; margin-top: 1.2rem; }
+
+/* FAQ dengan details/summary */
+details {
+  background: var(--white); border-radius: 12px; box-shadow: var(--shadow);
+  margin-bottom: 0.8rem; padding: 0 1.2rem;
+}
+summary { cursor: pointer; font-weight: 600; color: var(--green-dark); padding: 1rem 0; min-height: 44px; }
+details[open] summary { border-bottom: 1px solid var(--green-light); margin-bottom: 0.8rem; }
+
+/* 10. HALAMAN TENTANG */
+.member-card { text-align: center; }
+.avatar {
+  width: 72px; height: 72px; border-radius: 50%; background: var(--green-light);
+  display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 0.8rem;
+}
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+th, td { text-align: left; padding: 0.8rem 1rem; border-bottom: 1px solid var(--green-light); vertical-align: top; }
+th { background: var(--green-dark); color: var(--white); }
+.ref-list li { margin-bottom: 0.6rem; overflow-wrap: anywhere; }
+
+/* 11. FOOTER */
+.site-footer { background: var(--green-dark); color: var(--green-light); padding: 2.5rem 0 1.2rem; margin-top: 3rem; }
+.site-footer h2 { color: var(--white); font-size: 1.1rem; }
+.site-footer a { color: var(--green-light); }
+.site-footer a:hover { color: var(--white); }
+.footer-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 0.3rem; }
+.footer-bottom { border-top: 1px solid rgba(229, 238, 220, 0.3); margin-top: 1.5rem; padding-top: 1rem; font-size: 0.85rem; text-align: center; }
+.site-footer .container > .footer-grid a { overflow-wrap: anywhere; }
+
+/* ==========================================================
+   MEDIA QUERIES
+   ========================================================== */
+
+/* Tablet (>= 768px) */
+@media (min-width: 768px) {
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.8rem; }
+  .header-inner { flex-direction: row; justify-content: space-between; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .split { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .article { padding: 2rem; }
+  .hero h1 { font-size: 2.6rem; }
+}
+
+/* Desktop (>= 1024px) */
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.1fr 1fr; }
+  .hero h1 { font-size: 3rem; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .footer-grid { grid-template-columns: 2fr 1fr 1.5fr; }
+  .section { padding: 4rem 0; }
+}
+
+/* Layar sangat kecil (<= 380px) */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 1.9rem; }
+  .nav-link { padding: 0.5rem 0.7rem; font-size: 0.9rem; }
+}
+
+/* Hormati preferensi pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
